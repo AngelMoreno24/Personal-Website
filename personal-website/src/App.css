@@ -14,14 +14,20 @@ body, html {
   height: 100vh;
 }
 
-/* Header & Footer */
-.header, .footer {
+/* Header & Navbar */
+.header {
   background-color: #1e1e1e;
   color: white;
   text-align: center;
   padding: 15px;
   flex-shrink: 0;
   font-size: 18px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
 }
 
 /* Content Area */
@@ -44,61 +50,29 @@ body, html {
   border-radius: 10px;
   width: 250px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
-  flex: 1; /* Allows flexible resizing */
-  min-width: 250px; 
-  min-height: 250px; 
-  max-height: 250px;
+  flex: 1;
+  min-width: 250px;
 }
 
-/* Scrollable Section (Right Side) */
-.scrollable-section {
+/* Static Section (Right Side) */
+.static-section {
   width: 60%;
-  height: 300px;
+  min-height: 250px;
   background-color: #1e1e1e;
-  padding: 15px;
-  overflow-y: scroll;
+  padding: 20px;
   border-radius: 10px;
   border: 2px solid #333;
-  scrollbar-width: none; /* Hides scrollbar for Firefox */
-  -ms-overflow-style: none; /* Hides scrollbar for Internet Explorer */
   box-shadow: inset 0px 0px 10px rgba(255, 255, 255, 0.1);
-  flex: 2; /* Takes more space */
-  min-width: 250px; /* Prevents shrinking too much */
+  flex: 2;
+  min-width: 250px;
 }
 
-/* Hide scrollbar for Chrome, Edge, Safari */
-.scrollable-section::-webkit-scrollbar {
-  display: none;
-}
-
-/* Responsive Design: Stack elements vertically on small screens */
-@media (max-width: 768px) {
-  .content {
-    flex-direction: column; /* Stack elements on small screens */
-    align-items: center;
-  }
-
-  .fixed-text {
-    width: 90%; /* Adjust width for small screens */
-    text-align: center;
-  }
-
-  .scrollable-section {
-    width: 90%;
-    height: 300px; /* Ensure it stays the same height */
-    min-height: 300px; /* Prevents shrinking */
-  }
-}
-
-
-
-
+/* Social Buttons */
 .social-buttons {
   display: flex;
-  justify-content: center; /* Centers horizontally */
-  align-items: center; /* Centers vertically */
-  gap: 10px; /* Adds spacing between icons */
-  margin-top: 10px; /* Adjust spacing from the header */
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
 }
 
 .social-btn {
@@ -115,4 +89,16 @@ body, html {
 
 .social-icon:hover {
   transform: scale(1.1);
+}
+
+/* Responsive Design: Stack elements on small screens */
+@media (max-width: 768px) {
+  .content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .static-section {
+    width: 90%;
+  }
 }
