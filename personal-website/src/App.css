@@ -1,38 +1,118 @@
-.App {
-  text-align: center;
+/* General Styling */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Arial, sans-serif;
+  background-color: #121212; /* Dark background */
+  color: #fff; /* Light text */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  height: 100vh;
+}
+
+/* Header & Footer */
+.header, .footer {
+  background-color: #1e1e1e;
   color: white;
+  text-align: center;
+  padding: 15px;
+  flex-shrink: 0;
+  font-size: 18px;
 }
 
-.App-link {
-  color: #61dafb;
+/* Content Area */
+.content {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Moves sections higher */
+  padding: 40px;
+  gap: 20px; /* Adds spacing between sections */
+  flex-wrap: wrap; /* Allows responsive stacking */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Fixed Text Section (Left Side) */
+.fixed-text {
+  background-color: #292929;
+  padding: 20px;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 10px;
+  width: 250px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+  flex: 1; /* Allows flexible resizing */
+  min-width: 250px; 
+  min-height: 250px; 
+  max-height: 250px;
+}
+
+/* Scrollable Section (Right Side) */
+.scrollable-section {
+  width: 60%;
+  height: 300px;
+  background-color: #1e1e1e;
+  padding: 15px;
+  overflow-y: scroll;
+  border-radius: 10px;
+  border: 2px solid #333;
+  scrollbar-width: none; /* Hides scrollbar for Firefox */
+  -ms-overflow-style: none; /* Hides scrollbar for Internet Explorer */
+  box-shadow: inset 0px 0px 10px rgba(255, 255, 255, 0.1);
+  flex: 2; /* Takes more space */
+  min-width: 250px; /* Prevents shrinking too much */
+}
+
+/* Hide scrollbar for Chrome, Edge, Safari */
+.scrollable-section::-webkit-scrollbar {
+  display: none;
+}
+
+/* Responsive Design: Stack elements vertically on small screens */
+@media (max-width: 768px) {
+  .content {
+    flex-direction: column; /* Stack elements on small screens */
+    align-items: center;
   }
-  to {
-    transform: rotate(360deg);
+
+  .fixed-text {
+    width: 90%; /* Adjust width for small screens */
+    text-align: center;
   }
+
+  .scrollable-section {
+    width: 90%;
+    height: 300px; /* Ensure it stays the same height */
+    min-height: 300px; /* Prevents shrinking */
+  }
+}
+
+
+
+
+.social-buttons {
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center; /* Centers vertically */
+  gap: 10px; /* Adds spacing between icons */
+  margin-top: 10px; /* Adjust spacing from the header */
+}
+
+.social-btn {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.social-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.social-icon:hover {
+  transform: scale(1.1);
 }
