@@ -5,25 +5,25 @@ import Button from "react-bootstrap/Button";
 function App() {
   const [activeSection, setActiveSection] = useState("About");
 
-  // Define skills with colors
+  // Define skills with unique colors
   const skills = {
     Languages: [
-      { name: "C#", color: "#f34b7d" },
+      { name: "C#", color: "#9b4f96" },
       { name: "Java", color: "#f89820" },
-      { name: "JavaScript", color: "#c2bf1e" },
-      { name: "Python", color: "#3776ab" },
+      { name: "JavaScript", color: "#f7df1e" },
+      { name: "Python", color: "#306998" },
     ],
     Technologies: [
-      { name: "React", color: "#68a063" },
-      { name: "ASP.NET", color: "#68217a" },
-      { name: "Express", color: "#404040" },
-      { name: "Node.js", color: "#68a063" },
-      { name: ".NET", color: "#68217a" },
-      { name: "ExpressJS", color: "#404040" },
+      { name: "React", color: "#61dafb" },
+      { name: "ASP.NET", color: "#512bd4" },
+      { name: "Express", color: "#353535" },
+      { name: "Node.js", color: "#3c873a" },
+      { name: ".NET", color: "#512bd4" },
+      { name: "ExpressJS", color: "#212121" },
     ],
     Databases: [
-      { name: "MongoDB", color: "#68a063" },
-      { name: "SQL", color: "#68217a" }, 
+      { name: "MongoDB", color: "#47a248" },
+      { name: "SQL", color: "#00758f" },
     ],
   };
 
@@ -47,16 +47,17 @@ function App() {
         <div className="fixed-text">
           <h1>Angel Moreno</h1>
           <h3>Phoenix, Arizona</h3>
-          
-          <p>Email: angel.moreno8424@gmail.com</p>
-          <p>Phone: 602-793-2114</p>
+
+          <p>angel.moreno8424@gmail.com</p>
+          <p>602-793-2114</p>
 
           <div className="social-buttons">
             <a
               href="https://github.com/AngelMoreno24"
               target="_blank"
               rel="noopener noreferrer"
-              className="social-btn">
+              className="social-btn"
+            >
               <img
                 src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
                 alt="GitHub"
@@ -68,7 +69,8 @@ function App() {
               href="https://www.linkedin.com/in/angel-moreno-1568b5327/"
               target="_blank"
               rel="noopener noreferrer"
-              className="social-btn">
+              className="social-btn"
+            >
               <img
                 src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png"
                 alt="LinkedIn"
@@ -82,7 +84,7 @@ function App() {
           {activeSection === "About" && (
             <div>
               <h2>About Me</h2>
-              <p>My name is Angel Moreno, I am a software developer.</p>
+              <p>My name is Angel Moreno, I am a CS graduate.</p>
               <p>Experienced in React, Node.js, and MySQL.</p>
 
               <h2>Skills</h2>
@@ -94,7 +96,7 @@ function App() {
                       <span
                         key={skill.name}
                         className="skill-bubble"
-                        style={{ backgroundColor: skill.color }}
+                        data-skill={skill.name}
                       >
                         {skill.name}
                       </span>
@@ -102,6 +104,20 @@ function App() {
                   </div>
                 </div>
               ))}
+
+              <h2>Education</h2>
+              <div className="education-section">
+                <img
+                  src="https://www.crwflags.com/fotw/images/u/us_u_azs.gif"
+                  alt="Profile"
+                  className="profile-pic"
+                />
+                <div className="education-text">
+                  <p><strong>Bachelor of Computer Science</strong></p>
+                  <p>Arizona State University</p>
+                  <p>Ira A. Fulton Schools of Engineering</p>
+                </div>
+              </div>
             </div>
           )}
 
