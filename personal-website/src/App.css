@@ -102,3 +102,23 @@ body, html {
     width: 90%;
   }
 }
+
+
+
+/* Skill Bubbles */
+.skill-bubbles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.skill-bubble {
+  padding: 8px 15px;
+  border-radius: 20px;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+  display: inline-block;
+  font-size: 14px;
+}
