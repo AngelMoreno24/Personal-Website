@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import "./App.css";
 import Button from "react-bootstrap/Button";
+import algorithmVisualizer from './images/algorithmVisualizer.PNG'
+import expenseTracker from './images/expenseTracker.PNG'
+import workoutTracker from './images/workoutTracker.PNG'
 
 function App() {
   const [activeSection, setActiveSection] = useState("About");
@@ -26,24 +29,27 @@ function App() {
       { name: "SQL", color: "#00758f" },
     ],
   };
-
+  const projects = [
+    {
+      name: "Algorithm Visualizer",
+      link: "https://incandescent-kleicha-6e7f46.netlify.app",
+      img: algorithmVisualizer,
+    },
+    {
+      name: "ExpenseTracker",
+      link: "https://gorgeous-churros-134386.netlify.app",
+      img: expenseTracker,
+    },
+    {
+      name: "Workout Tracker",
+      link: "https://your-portfolio-site.com",
+      img: workoutTracker,
+    },
+  ];
   return (
     <div className="container">
-      <header className="header">
-        <nav className="navbar">
-          <Button variant="dark" onClick={() => setActiveSection("About")}>
-            About
-          </Button>
-          <Button variant="dark" onClick={() => setActiveSection("Projects")}>
-            Projects
-          </Button>
-          <Button variant="dark" onClick={() => setActiveSection("Contact")}>
-            Contact
-          </Button>
-        </nav>
-      </header>
-
       <main className="content">
+        {/* Left Side (Fixed Info) */}
         <div className="fixed-text">
           <h1>Angel Moreno</h1>
           <h3>Phoenix, Arizona</h3>
@@ -80,12 +86,39 @@ function App() {
           </div>
         </div>
 
+        {/* Right Side (Switchable Content) */}
         <div className="static-section">
+          {/* Moved Navbar here */}
+          <div className="section-nav">
+            <Button
+              variant="dark"
+              className={activeSection === "About" ? "active-btn" : ""}
+              onClick={() => setActiveSection("About")}
+            >
+              About
+            </Button>
+            <Button
+              variant="dark"
+              className={activeSection === "Projects" ? "active-btn" : ""}
+              onClick={() => setActiveSection("Projects")}
+            >
+              Projects
+            </Button>
+            <Button
+              variant="dark"
+              className={activeSection === "Contact" ? "active-btn" : ""}
+              onClick={() => setActiveSection("Contact")}
+            >
+              Contact
+            </Button>
+          </div>
+
+          {/* Content Below Navbar */}
           {activeSection === "About" && (
             <div>
               <h2>About Me</h2>
-              <p>My name is Angel Moreno, I am a CS graduate.</p>
-              <p>Experienced in React, Node.js, and MySQL.</p>
+              <p>My name is Angel Moreno, I am a CS graduate with experience
+                in React, Node.js.</p>
 
               <h2>Skills</h2>
               {Object.keys(skills).map((category) => (
@@ -124,11 +157,24 @@ function App() {
           {activeSection === "Projects" && (
             <div>
               <h2>Projects</h2>
-              <ul>
-                <li>Algorithm Visualizer</li>
-                <li>Blog App with MySQL</li>
-                <li>Portfolio Website</li>
-              </ul>
+              <div className="project-grid">
+                {projects.map((project) => (
+                  <a
+                    key={project.name}
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="project-card"
+                  >
+                    <img
+                      src={project.img}
+                      alt={project.name}
+                      className="project-img"
+                    />
+                    <p>{project.name}</p>
+                  </a>
+                ))}
+              </div>
             </div>
           )}
 
