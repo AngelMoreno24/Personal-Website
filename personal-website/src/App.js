@@ -117,8 +117,10 @@ function App() {
           {activeSection === "About" && (
             <div>
               <h2>About Me</h2>
-              <p>My name is Angel Moreno, I am a CS graduate with experience
-                in React, Node.js.</p>
+              <p>Highly motivated Computer Science graduate skilled in software
+engineering principles. Seeking a role where I can and grow and learn from experienced team
+members while contributing current skills.
+</p>
 
               <h2>Skills</h2>
               {Object.keys(skills).map((category) => (

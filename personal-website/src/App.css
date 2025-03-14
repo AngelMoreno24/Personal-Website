@@ -70,6 +70,7 @@ body, html {
   border-radius: 5px;
   cursor: pointer;
   transition: 0.3s;
+  width: 30%; 
 }
 
 .section-nav button:hover {
@@ -202,6 +203,10 @@ body, html {
 .education-text {
   display: flex;
   flex-direction: column;
+  gap: 0px;  /* Reduce gap between text lines */
+  margin: 0;  /* Remove extra margins */
+  padding: 0;  /* Remove padding */
+  line-height: 0;  /* Reduce space between lines */
 }
 
 /* Footer */
