@@ -22,7 +22,6 @@ function App() {
       { name: "Express", color: "#353535" },
       { name: "Node.js", color: "#3c873a" },
       { name: ".NET", color: "#512bd4" },
-      { name: "ExpressJS", color: "#212121" },
     ],
     Databases: [
       { name: "MongoDB", color: "#47a248" },
@@ -88,11 +87,11 @@ function App() {
 
             {/* Download Resume Button */}
             <a 
-              href="/resume.pdf" 
+              href="/Angel_Moreno_Resume.pdf" 
               download="Angel_Moreno_Resume.pdf" 
               className="resume-btn"
             >
-              📄  Resume
+              📄 Resume
             </a>
           </div>
 
