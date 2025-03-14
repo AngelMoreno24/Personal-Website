@@ -70,7 +70,7 @@ body, html {
   border-radius: 5px;
   cursor: pointer;
   transition: 0.3s;
-  width: 30%; 
+  width: 48%; 
 }
 
 .section-nav button:hover {
@@ -254,4 +254,27 @@ body, html {
   height: 120px;
   object-fit: cover;
   border-radius: 8px;
+}
+
+
+
+
+
+
+.resume-btn {
+  display: inline-block;
+  padding: 10px 15px;
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
+  background-color: #007acc;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease-in-out;
+  margin-left: 10px;
+  height: 20px;
+}
+
+.resume-btn:hover {
+  background-color: #0056b3;
 }

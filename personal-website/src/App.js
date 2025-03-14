@@ -58,6 +58,7 @@ function App() {
           <p>602-793-2114</p>
 
           <div className="social-buttons">
+            {/* GitHub Link */}
             <a
               href="https://github.com/AngelMoreno24"
               target="_blank"
@@ -71,6 +72,7 @@ function App() {
               />
             </a>
 
+            {/* LinkedIn Link */}
             <a
               href="https://www.linkedin.com/in/angel-moreno-1568b5327/"
               target="_blank"
@@ -83,7 +85,18 @@ function App() {
                 className="social-icon"
               />
             </a>
+
+            {/* Download Resume Button */}
+            <a 
+              href="/resume.pdf" 
+              download="Angel_Moreno_Resume.pdf" 
+              className="resume-btn"
+            >
+              📄  Resume
+            </a>
           </div>
+
+
         </div>
 
         {/* Right Side (Switchable Content) */}
@@ -104,13 +117,6 @@ function App() {
             >
               Projects
             </Button>
-            <Button
-              variant="dark"
-              className={activeSection === "Contact" ? "active-btn" : ""}
-              onClick={() => setActiveSection("Contact")}
-            >
-              Contact
-            </Button>
           </div>
 
           {/* Content Below Navbar */}
@@ -118,7 +124,7 @@ function App() {
             <div>
               <h2>About Me</h2>
               <p>Highly motivated Computer Science graduate skilled in software
-engineering principles. Seeking a role where I can and grow and learn from experienced team
+engineering principles. Seeking a role where I can grow and learn from experienced team
 members while contributing current skills.
 </p>
 
@@ -177,14 +183,6 @@ members while contributing current skills.
                   </a>
                 ))}
               </div>
-            </div>
-          )}
-
-          {activeSection === "Contact" && (
-            <div>
-              <h2>Contact</h2>
-              <p>Email: angel.moreno8424@gmail.com</p>
-              <p>Phone: 602-793-2114</p>
             </div>
           )}
         </div>
