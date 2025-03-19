@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import algorithmVisualizer from './images/algorithmVisualizer.PNG'
 import expenseTracker from './images/expenseTracker.PNG'
 import workoutTracker from './images/workoutTracker.PNG'
+import pathfindingVisualizer from './images/pathfindingVisualizer.PNG'
 
 function App() {
   const [activeSection, setActiveSection] = useState("About");
@@ -32,7 +33,7 @@ function App() {
     {
       name: "Pathfinding Visualizer",
       link: "https://pathfindingvizualizer.netlify.app/",
-      img: algorithmVisualizer,
+      img: pathfindingVisualizer,
     },
     {
       name: "Algorithm Visualizer",
