@@ -30,6 +30,11 @@ function App() {
   };
   const projects = [
     {
+      name: "Pathfinding Visualizer",
+      link: "https://pathfindingvizualizer.netlify.app/",
+      img: algorithmVisualizer,
+    },
+    {
       name: "Algorithm Visualizer",
       link: "https://incandescent-kleicha-6e7f46.netlify.app",
       img: algorithmVisualizer,
