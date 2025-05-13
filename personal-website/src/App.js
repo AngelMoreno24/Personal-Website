@@ -5,7 +5,7 @@ import algorithmVisualizer from './images/algorithmVisualizer.PNG'
 import expenseTracker from './images/expenseTracker.PNG'
 import workoutTracker from './images/workoutTracker.PNG'
 import pathfindingVisualizer from './images/pathfindingVisualizer.PNG'
-import chatAppication from './images/chatApplication.PNG'
+import chatAppication from './images/chatApplication.png'
 
 function App() {
   const [activeSection, setActiveSection] = useState("About");
