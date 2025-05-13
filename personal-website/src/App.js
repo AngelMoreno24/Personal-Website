@@ -5,7 +5,7 @@ import algorithmVisualizer from './images/algorithmVisualizer.PNG'
 import expenseTracker from './images/expenseTracker.PNG'
 import workoutTracker from './images/workoutTracker.PNG'
 import pathfindingVisualizer from './images/pathfindingVisualizer.PNG'
-import chatAppication from './images/chatApplication.png'
+import chatApplication from './images/chatApplication.png'
 
 function App() {
   const [activeSection, setActiveSection] = useState("About");
@@ -54,7 +54,7 @@ function App() {
     {
       name: "Chat Application",
       link: "https://am-chat-application.netlify.app/home",
-      img: chatAppication,
+      img: chatApplication,
     },
   ];
   return (
