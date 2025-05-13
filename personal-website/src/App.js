@@ -5,6 +5,7 @@ import algorithmVisualizer from './images/algorithmVisualizer.PNG'
 import expenseTracker from './images/expenseTracker.PNG'
 import workoutTracker from './images/workoutTracker.PNG'
 import pathfindingVisualizer from './images/pathfindingVisualizer.PNG'
+import chatAppication from './images/chatApplication.PNG'
 
 function App() {
   const [activeSection, setActiveSection] = useState("About");
@@ -41,7 +42,7 @@ function App() {
       img: algorithmVisualizer,
     },
     {
-      name: "ExpenseTracker",
+      name: "Expense Tracker",
       link: "https://gorgeous-churros-134386.netlify.app",
       img: expenseTracker,
     },
@@ -49,6 +50,11 @@ function App() {
       name: "Workout Tracker",
       link: "https://your-portfolio-site.com",
       img: workoutTracker,
+    },
+    {
+      name: "Chat Application",
+      link: "https://am-chat-application.netlify.app/home",
+      img: chatAppication,
     },
   ];
   return (
