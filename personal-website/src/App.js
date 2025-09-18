@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import "./App.css";
 import Button from "react-bootstrap/Button";
-import algorithmVisualizer from './images/algorithmVisualizer.PNG'
-import expenseTracker from './images/expenseTracker.PNG'
-import workoutTracker from './images/workoutTracker.PNG'
-import pathfindingVisualizer from './images/pathfindingVisualizer.PNG'
-import chatApplication from './images/chatApplication.png'
+import algorithmVisualizer from './images/algorithmVisualizer.PNG';
+import expenseTracker from './images/expenseTracker.PNG';
+import workoutTracker from './images/workoutTracker.PNG';
+import pathfindingVisualizer from './images/pathfindingVisualizer.PNG';
+import chatApplication from './images/chatApplication.png';
+import ticketTracker from './images/ticketTracker.PNG';
 
 function App() {
   const [activeSection, setActiveSection] = useState("About");
+  const [selectedProject, setSelectedProject] = useState(null);
 
-  // Define skills with unique colors
   const skills = {
     Languages: [
       { name: "C#", color: "#9b4f96" },
@@ -30,46 +31,102 @@ function App() {
       { name: "SQL", color: "#00758f" },
     ],
   };
+
+  // tech color mapping
+  const techColors = {
+    React: "#61dafb",
+    JavaScript: "#f7df1e",
+    CSS: "#264de4",
+    Bootstrap: "#7952b3",
+    "Node.js": "#3c873a",
+    Express: "#353535",
+    MongoDB: "#47a248",
+    "Socket.IO": "#010101",
+    "Azure SQL": "#0078d4",
+  };
+
   const projects = [
     {
       name: "Pathfinding Visualizer",
-      link: "https://pathfindingvizualizer.netlify.app/",
       img: pathfindingVisualizer,
+      description: "Visualize algorithms for pathfinding on a grid with animations.",
+      stack: ["React", "JavaScript", "CSS"],
+      github: "https://github.com/yourusername/pathfinding-visualizer",
+      demo: "https://pathfindingvizualizer.netlify.app/",
     },
     {
       name: "Algorithm Visualizer",
-      link: "https://incandescent-kleicha-6e7f46.netlify.app",
       img: algorithmVisualizer,
+      description: "Interactive visualizations for common sorting and searching algorithms.",
+      stack: ["React", "JavaScript", "Bootstrap"],
+      github: "https://github.com/yourusername/algorithm-visualizer",
+      demo: "https://incandescent-kleicha-6e7f46.netlify.app",
     },
     {
       name: "Expense Tracker",
-      link: "https://gorgeous-churros-134386.netlify.app",
       img: expenseTracker,
+      description: "Track daily expenses and visualize spending habits.",
+      stack: ["React", "Node.js", "Express", "MongoDB"],
+      github: "https://github.com/yourusername/expense-tracker",
+      demo: "https://gorgeous-churros-134386.netlify.app",
     },
     {
       name: "Workout Tracker",
-      link: "https://your-portfolio-site.com",
       img: workoutTracker,
+      description: "Manage workouts and track progress over time.",
+      stack: ["React", "Node.js", "Express", "MongoDB"],
+      github: "https://github.com/yourusername/workout-tracker",
+      demo: "https://your-portfolio-site.com",
     },
     {
       name: "Chat Application",
-      link: "https://am-chat-application.netlify.app/home",
       img: chatApplication,
+      description: "Real-time chat app with multiple rooms and user authentication.",
+      stack: ["Node.js", "Express", "React", "Socket.IO", "Azure SQL"],
+      github: "https://github.com/yourusername/chat-application",
+      demo: "https://am-chat-application.netlify.app/home",
+    },
+    {
+      name: "Ticket Tracker",
+      img: ticketTracker,
+      description: "Track software tickets with comments, attachments, and status updates.",
+      stack: ["React", "Node.js", "Express", "MongoDB"],
+      github: "https://github.com/yourusername/ticket-tracker",
+      demo: "https://am-ticket-tracker.netlify.app",
     },
   ];
+
+  const openProjectModal = (project) => setSelectedProject(project);
+  const closeProjectModal = () => setSelectedProject(null);
+
+
+
+  const darkenColor = (hex, percent) => {
+    const num = parseInt(hex.replace("#",""),16),
+          amt = Math.round(2.55 * percent * 100),
+          R = (num >> 16) - amt,
+          G = ((num >> 8) & 0x00FF) - amt,
+          B = (num & 0x0000FF) - amt;
+    return "#" + (
+      0x1000000 + 
+      (R<0?0:R>255?255:R)*0x10000 + 
+      (G<0?0:G>255?255:G)*0x100 + 
+      (B<0?0:B>255?255:B)
+    ).toString(16).slice(1);
+  };
+
+
   return (
     <div className="container">
       <main className="content">
-        {/* Left Side (Fixed Info) */}
+        {/* Left Side */}
         <div className="fixed-text">
           <h1>Angel Moreno</h1>
           <h3>Phoenix, Arizona</h3>
-
           <p>angel.moreno8424@gmail.com</p>
           <p>602-793-2114</p>
 
           <div className="social-buttons">
-            {/* GitHub Link */}
             <a
               href="https://github.com/AngelMoreno24"
               target="_blank"
@@ -83,7 +140,6 @@ function App() {
               />
             </a>
 
-            {/* LinkedIn Link */}
             <a
               href="https://www.linkedin.com/in/angel-moreno-1568b5327/"
               target="_blank"
@@ -97,22 +153,18 @@ function App() {
               />
             </a>
 
-            {/* Download Resume Button */}
-            <a 
-              href="/Angel_Moreno_Resume.pdf" 
-              download="Angel_Moreno_Resume.pdf" 
+            <a
+              href="/Angel_Moreno_Resume.pdf"
+              download="Angel_Moreno_Resume.pdf"
               className="resume-btn"
             >
               📄 Resume
             </a>
           </div>
-
-
         </div>
 
-        {/* Right Side (Switchable Content) */}
+        {/* Right Side */}
         <div className="static-section">
-          {/* Moved Navbar here */}
           <div className="section-nav">
             <Button
               variant="dark"
@@ -130,14 +182,13 @@ function App() {
             </Button>
           </div>
 
-          {/* Content Below Navbar */}
           {activeSection === "About" && (
             <div>
               <h2>About Me</h2>
-              <p>Highly motivated Computer Science graduate skilled in software
-engineering principles. Seeking a role where I can grow and learn from experienced team
-members while contributing current skills.
-</p>
+              <p>
+                Highly motivated Computer Science graduate skilled in software engineering principles.
+                Seeking a role where I can grow and learn from experienced team members while contributing current skills.
+              </p>
 
               <h2>Skills</h2>
               {Object.keys(skills).map((category) => (
@@ -148,6 +199,7 @@ members while contributing current skills.
                       <span
                         key={skill.name}
                         className="skill-bubble"
+                        style={{ backgroundColor: skill.color, color: "#fff" }}
                         data-skill={skill.name}
                       >
                         {skill.name}
@@ -178,12 +230,10 @@ members while contributing current skills.
               <h2>Projects</h2>
               <div className="project-grid">
                 {projects.map((project) => (
-                  <a
+                  <div
                     key={project.name}
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
                     className="project-card"
+                    onClick={() => openProjectModal(project)}
                   >
                     <img
                       src={project.img}
@@ -191,7 +241,7 @@ members while contributing current skills.
                       className="project-img"
                     />
                     <p>{project.name}</p>
-                  </a>
+                  </div>
                 ))}
               </div>
             </div>
@@ -199,7 +249,39 @@ members while contributing current skills.
         </div>
       </main>
 
-      <footer className="footer">Fixed Footer</footer>
+      {/* Project Modal */}
+      {selectedProject && (
+        <div className="modal-overlay" onClick={closeProjectModal}>
+          <div className="modal-content fade-in" onClick={(e) => e.stopPropagation()}>
+            <button className="close-btn" onClick={closeProjectModal}>×</button>
+            <img src={selectedProject.img} alt={selectedProject.name} className="modal-img" />
+            <h2>{selectedProject.name}</h2>
+            <p>{selectedProject.description}</p>
+
+            <h3>Tech Stack</h3>
+            <div className="stack-list">
+              {selectedProject.stack.map((tech) => (
+                <span
+                  key={tech}
+                  className="skill-bubble"
+                  data-skill={tech}
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+
+            <div className="modal-links">
+              <a href={selectedProject.github} target="_blank" rel="noopener noreferrer" className="resume-btn">
+                GitHub
+              </a>
+              <a href={selectedProject.demo} target="_blank" rel="noopener noreferrer" className="resume-btn">
+                Live Demo
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
