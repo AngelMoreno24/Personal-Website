@@ -3,7 +3,6 @@ import "./App.css";
 import Button from "react-bootstrap/Button";
 import algorithmVisualizer from './images/algorithmVisualizer.PNG';
 import expenseTracker from './images/expenseTracker.PNG';
-import workoutTracker from './images/workoutTracker.PNG';
 import pathfindingVisualizer from './images/pathfindingVisualizer.PNG';
 import chatApplication from './images/chatApplication.png';
 import ticketTracker from './images/ticketTracker.PNG';
@@ -30,19 +29,6 @@ function App() {
       { name: "MongoDB", color: "#47a248" },
       { name: "SQL", color: "#00758f" },
     ],
-  };
-
-  // tech color mapping
-  const techColors = {
-    React: "#61dafb",
-    JavaScript: "#f7df1e",
-    CSS: "#264de4",
-    Bootstrap: "#7952b3",
-    "Node.js": "#3c873a",
-    Express: "#353535",
-    MongoDB: "#47a248",
-    "Socket.IO": "#010101",
-    "Azure SQL": "#0078d4",
   };
 
   const projects = [
@@ -91,21 +77,6 @@ function App() {
   const openProjectModal = (project) => setSelectedProject(project);
   const closeProjectModal = () => setSelectedProject(null);
 
-
-
-  const darkenColor = (hex, percent) => {
-    const num = parseInt(hex.replace("#",""),16),
-          amt = Math.round(2.55 * percent * 100),
-          R = (num >> 16) - amt,
-          G = ((num >> 8) & 0x00FF) - amt,
-          B = (num & 0x0000FF) - amt;
-    return "#" + (
-      0x1000000 + 
-      (R<0?0:R>255?255:R)*0x10000 + 
-      (G<0?0:G>255?255:G)*0x100 + 
-      (B<0?0:B>255?255:B)
-    ).toString(16).slice(1);
-  };
 
 
   return (
