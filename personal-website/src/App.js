@@ -51,7 +51,7 @@ function App() {
       img: pathfindingVisualizer,
       description: "Visualize algorithms for pathfinding on a grid with animations.",
       stack: ["React", "JavaScript", "CSS"],
-      github: "https://github.com/yourusername/pathfinding-visualizer",
+      github: "https://github.com/AngelMoreno24/pathfinder-visualizer",
       demo: "https://pathfindingvizualizer.netlify.app/",
     },
     {
@@ -59,7 +59,7 @@ function App() {
       img: algorithmVisualizer,
       description: "Interactive visualizations for common sorting and searching algorithms.",
       stack: ["React", "JavaScript", "Bootstrap"],
-      github: "https://github.com/yourusername/algorithm-visualizer",
+      github: "https://github.com/AngelMoreno24/AlgoVizualizer",
       demo: "https://incandescent-kleicha-6e7f46.netlify.app",
     },
     {
@@ -67,23 +67,15 @@ function App() {
       img: expenseTracker,
       description: "Track daily expenses and visualize spending habits.",
       stack: ["React", "Node.js", "Express", "MongoDB"],
-      github: "https://github.com/yourusername/expense-tracker",
+      github: "https://github.com/AngelMoreno24/Expense-Tracker",
       demo: "https://gorgeous-churros-134386.netlify.app",
-    },
-    {
-      name: "Workout Tracker",
-      img: workoutTracker,
-      description: "Manage workouts and track progress over time.",
-      stack: ["React", "Node.js", "Express", "MongoDB"],
-      github: "https://github.com/yourusername/workout-tracker",
-      demo: "https://your-portfolio-site.com",
     },
     {
       name: "Chat Application",
       img: chatApplication,
       description: "Real-time chat app with multiple rooms and user authentication.",
       stack: ["Node.js", "Express", "React", "Socket.IO", "Azure SQL"],
-      github: "https://github.com/yourusername/chat-application",
+      github: "https://github.com/AngelMoreno24/chat-website",
       demo: "https://am-chat-application.netlify.app/home",
     },
     {
@@ -91,7 +83,7 @@ function App() {
       img: ticketTracker,
       description: "Track software tickets with comments, attachments, and status updates.",
       stack: ["React", "Node.js", "Express", "MongoDB"],
-      github: "https://github.com/yourusername/ticket-tracker",
+      github: "https://github.com/AngelMoreno24/Bug-Tracker",
       demo: "https://am-ticket-tracker.netlify.app",
     },
   ];
@@ -272,7 +264,7 @@ function App() {
             </div>
 
             <div className="modal-links">
-              <a href={selectedProject.github} target="_blank" rel="noopener noreferrer" className="resume-btn">
+              <a href={selectedProject.github} target="_blank" rel="noopener noreferrer" className="resume-btn-github">
                 GitHub
               </a>
               <a href={selectedProject.demo} target="_blank" rel="noopener noreferrer" className="resume-btn">
