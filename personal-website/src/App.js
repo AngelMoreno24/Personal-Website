@@ -46,7 +46,7 @@ function App() {
       description: "Interactive visualizations for common sorting and searching algorithms.",
       stack: ["React", "JavaScript", "Bootstrap"],
       github: "https://github.com/AngelMoreno24/AlgoVizualizer",
-      demo: "https://incandescent-kleicha-6e7f46.netlify.app",
+      demo: "https://am-algorithm-visualizer.netlify.app",
     },
     {
       name: "Expense Tracker",
