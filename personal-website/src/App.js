@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import algorithmVisualizer from './images/algorithmVisualizer.PNG';
 import expenseTracker from './images/expenseTracker.PNG';
 import pathfindingVisualizer from './images/pathfindingVisualizer.PNG';
-import chatApplication from './images/chatApplication.png';
+import chatApp from './images/chatApp.PNG';
 import ticketTracker from './images/ticketTracker.PNG';
 
 function App() {
@@ -58,7 +58,7 @@ function App() {
     },
     {
       name: "Chat Application",
-      img: chatApplication,
+      img: chatApp,
       description: "Real-time chat app with multiple rooms and user authentication.",
       stack: ["Node.js", "Express", "React", "Socket.IO", "Azure SQL"],
       github: "https://github.com/AngelMoreno24/chat-website",
