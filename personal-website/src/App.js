@@ -106,18 +106,15 @@ function TechList({ items }) {
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(true);
+  const [activeHistoryTab, setActiveHistoryTab] = useState("experience");
   const isProjectsPage = window.location.pathname.replace(/\/$/, "") === "/projects";
-  const sectionHref = (section) => isProjectsPage ? `/#${section}` : `#${section}`;
 
   return (
     <div className="site-shell" data-theme={isDarkMode ? "dark" : "light"}>
       <header className="site-header">
         <nav className="top-nav" aria-label="Main navigation">
-          <a href={sectionHref("about")}>About</a>
-          <a href={sectionHref("education")}>Education</a>
-          <a href={sectionHref("experience")}>Experience</a>
-          <a href={isProjectsPage ? "/projects" : "#projects"}>Projects</a>
-          <a href={sectionHref("skills")}>Skills</a>
+          <a href={isProjectsPage ? "/" : "#about"}>Home</a>
+          <a href="/projects">Projects</a>
         </nav>
         <button
           className="theme-toggle"
@@ -135,14 +132,13 @@ function App() {
           <section className="section-wrap projects-page" id="projects" aria-labelledby="projects-title">
             <div className="section-heading">
               <div>
-                <p className="section-kicker">SELECTED WORK</p>
                 <h1 id="projects-title">Projects</h1>
               </div>
               <a className="text-link view-more-link" href="/#about">Back to home <span aria-hidden="true">↗</span></a>
             </div>
             <div className="project-grid">
-              {projects.map((project, index) => (
-                <ProjectCard project={project} index={index} key={project.name} />
+              {projects.map((project) => (
+                <ProjectCard project={project} key={project.name} />
               ))}
             </div>
           </section>
@@ -189,59 +185,82 @@ function App() {
           </div>
         </section>
 
-        <section className="education-section" id="education" aria-labelledby="education-title">
-          <div className="education-copy">
-            <p className="section-kicker">FOUNDATION</p>
-            <h2 id="education-title">Education</h2>
+        <section className="section-wrap history-section" aria-label="Experience and education">
+          <div className="profile-tabs" role="tablist" aria-label="Experience and education">
+            <button
+              id="experience-tab"
+              className="profile-tab"
+              type="button"
+              role="tab"
+              aria-selected={activeHistoryTab === "experience"}
+              aria-controls="history-panel"
+              onClick={() => setActiveHistoryTab("experience")}
+            >Experience</button>
+            <button
+              id="education-tab"
+              className="profile-tab"
+              type="button"
+              role="tab"
+              aria-selected={activeHistoryTab === "education"}
+              aria-controls="history-panel"
+              onClick={() => setActiveHistoryTab("education")}
+            >Education</button>
           </div>
-          <div className="education-entry">
-            <div className="education-mark" aria-hidden="true">BS / CS</div>
-            <div>
-              <h3>Bachelor of Computer Science</h3>
-              <p>Arizona State University</p>
-              <p>Ira A. Fulton Schools of Engineering</p>
-            </div>
-          </div>
-        </section>
-
-        <section className="section-wrap experience-section" id="experience" aria-labelledby="experience-title">
-          <div className="section-heading">
-            <div>
-              <p className="section-kicker">WORK / EXPERIENCE</p>
-              <h2 id="experience-title">Experience</h2>
-            </div>
-          </div>
-          <div className="experience-list">
-            {experience.map((entry) => (
-              <article className="experience-entry" key={entry.role}>
-                <div className="experience-heading">
-                  <div className="experience-title-group">
-                    <h3>{entry.role}</h3>
-                    <p className="experience-organization">
-                      {entry.organization}{entry.location ? ` · ${entry.location}` : ""}
-                    </p>
-                  </div>
-                  <div className="experience-meta">{entry.dates}</div>
+          <div
+            className="history-panel"
+            id="history-panel"
+            role="tabpanel"
+            aria-labelledby={`${activeHistoryTab}-tab`}
+            tabIndex="0"
+          >
+            {activeHistoryTab === "experience" ? (
+              <div className="experience-list">
+                {experience.map((entry) => (
+                  <article className="experience-entry" key={entry.role}>
+                    <div className="experience-heading">
+                      <div className="experience-title-group">
+                        <h2>{entry.role}</h2>
+                        <p className="experience-organization">
+                          {entry.organization}{entry.location ? ` · ${entry.location}` : ""}
+                        </p>
+                      </div>
+                      <div className="experience-meta">{entry.dates}</div>
+                    </div>
+                    <ul className="experience-highlights">
+                      {entry.highlights.map((highlight) => <li key={highlight}>{highlight}</li>)}
+                    </ul>
+                  </article>
+                ))}
+              </div>
+            ) : (
+              <article className="education-entry">
+                <div className="education-mark">
+                  <img src="/icons/asu-mark.svg" alt="Arizona State University" />
                 </div>
-                <ul className="experience-highlights">
-                  {entry.highlights.map((highlight) => <li key={highlight}>{highlight}</li>)}
-                </ul>
+                <div>
+                  <h2>Bachelor of Computer Science</h2>
+                  <p>Arizona State University</p>
+                  <p>Ira A. Fulton Schools of Engineering</p>
+                  <p>August 2020 - May 2024</p>
+                  <ul className="education-highlights">
+                    <li>4-time recipient of the Dean's Honor List</li>
+                  </ul>
+                </div>
               </article>
-            ))}
+            )}
           </div>
         </section>
 
         <section className="section-wrap" id="projects" aria-labelledby="projects-title">
           <div className="section-heading">
             <div>
-              <p className="section-kicker">SELECTED WORK</p>
               <h2 id="projects-title">Featured projects</h2>
             </div>
             <a className="text-link view-more-link" href="/projects">View more <span aria-hidden="true">↗</span></a>
           </div>
           <div className="project-grid">
-            {projects.slice(0, 2).map((project, index) => (
-              <ProjectCard project={project} index={index} key={project.name} />
+            {projects.slice(0, 2).map((project) => (
+              <ProjectCard project={project} key={project.name} />
             ))}
           </div>
         </section>
@@ -262,21 +281,22 @@ function App() {
   );
 }
 
-function ProjectCard({ project, index }) {
+function ProjectCard({ project }) {
   return (
     <article className="project-card">
-      <a className="project-image-link" href={project.demo} target="_blank" rel="noopener noreferrer" aria-label={`Open ${project.name} demo`}>
+      <div className="project-image-link">
         <img className="project-image" src={project.image} alt={`${project.name} interface`} loading="lazy" />
-      </a>
+      </div>
       <div className="project-heading">
-        <span className="project-number">0{index + 1}</span>
         <h3>{project.name}</h3>
-        <a className="round-arrow" href={project.github} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.name} source code`}>↗</a>
       </div>
       <p className="project-description">{project.description}</p>
       <div className="project-footer">
         <TechList items={project.stack} />
-        <a className="text-link" href={project.demo} target="_blank" rel="noopener noreferrer">Live demo <span aria-hidden="true">↗</span></a>
+        <div className="project-actions">
+          {project.demo && <a className="project-action" href={project.demo} target="_blank" rel="noopener noreferrer">Website</a>}
+          {project.github && <a className="project-action" href={project.github} target="_blank" rel="noopener noreferrer">Source</a>}
+        </div>
       </div>
     </article>
   );

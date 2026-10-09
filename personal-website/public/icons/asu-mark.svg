@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="6" fill="#8c1d40"/>
+  <path fill="#ffc627" d="M11 42.5 23.4 12h7.2L18.2 47H11zm18.8 0L42.2 12h7.2L37 47h-7.2zM14 51h36v3H14z"/>
+  <text x="32" y="39" fill="#fff" font-family="Arial, sans-serif" font-size="18" font-weight="700" text-anchor="middle">ASU</text>
+</svg>
