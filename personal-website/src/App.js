@@ -1,251 +1,284 @@
 import React, { useState } from "react";
-import "./App.css";
-import Button from "react-bootstrap/Button";
-import algorithmVisualizer from './images/algorithmVisualizer.PNG';
-import expenseTracker from './images/expenseTracker.PNG';
-import pathfindingVisualizer from './images/pathfindingVisualizer.PNG';
-import chatApp from './images/chatApp.PNG';
-import ticketTracker from './images/ticketTracker.PNG';
+import "./Portfolio.css";
+import algorithmVisualizer from "./images/algorithmVisualizer.PNG";
+import expenseTracker from "./images/expenseTracker.PNG";
+import pathfindingVisualizer from "./images/pathfindingVisualizer.PNG";
+import chatApp from "./images/chatApp.PNG";
+import ticketTracker from "./images/ticketTracker.PNG";
+
+const skills = [
+  { category: "Languages", items: ["C#", "Java", "JavaScript", "Python"] },
+  { category: "Frameworks", items: ["React", "ASP.NET", ".NET", "Express", "Node.js"] },
+  { category: "Data", items: ["MongoDB", "SQL", "Azure SQL"] },
+];
+
+const projects = [
+  {
+    name: "Pathfinding Visualizer",
+    image: pathfindingVisualizer,
+    description: "Explore pathfinding algorithms on an animated, interactive grid.",
+    stack: ["React", "JavaScript", "CSS"],
+    github: "https://github.com/AngelMoreno24/pathfinder-visualizer",
+    demo: "https://pathfindingvizualizer.netlify.app/",
+  },
+  {
+    name: "Algorithm Visualizer",
+    image: algorithmVisualizer,
+    description: "Interactive visualizations for common sorting and searching algorithms.",
+    stack: ["React", "JavaScript", "Bootstrap"],
+    github: "https://github.com/AngelMoreno24/AlgoVizualizer",
+    demo: "https://am-algorithm-visualizer.netlify.app",
+  },
+  {
+    name: "Expense Tracker",
+    image: expenseTracker,
+    description: "Track daily expenses and get a clearer view of spending habits.",
+    stack: ["React", "Node.js", "Express", "MongoDB"],
+    github: "https://github.com/AngelMoreno24/Expense-Tracker",
+    demo: "https://gorgeous-churros-134386.netlify.app",
+  },
+  {
+    name: "Chat Application",
+    image: chatApp,
+    description: "A real-time chat app with multiple rooms and user authentication.",
+    stack: ["React", "Node.js", "Express", "Socket.IO", "Azure SQL"],
+    github: "https://github.com/AngelMoreno24/chat-website",
+    demo: "https://am-chat-application.netlify.app/home",
+  },
+  {
+    name: "Ticket Tracker",
+    image: ticketTracker,
+    description: "Manage software tickets with comments, attachments, and status updates.",
+    stack: ["React", "Node.js", "Express", "MongoDB"],
+    github: "https://github.com/AngelMoreno24/Bug-Tracker",
+    demo: "https://am-ticket-tracker.netlify.app",
+  },
+];
+
+const experience = [
+  {
+    role: "Amazon Sortation Center Associate",
+    organization: "Amazon Sortation Center",
+    dates: "April 2026 - Present",
+    highlights: [
+      "Sort and scan packages using warehouse tracking systems to ensure accurate routing and shipment processing while adapting quickly to changing priorities and workloads.",
+    ],
+  },
+  {
+    role: "Full-Stack Developer Internship",
+    organization: "Playtoon It",
+    location: "Remote",
+    dates: "December 2025 - May 2026",
+    highlights: [
+      "Developed REST API endpoints and server-side functionality using Node.js, Express, and PostgreSQL.",
+      "Collaborated with developers through Git workflows, code reviews, and weekly meetings.",
+      "Designed and enforced Role-Based Access Control (RBAC) using Next.js Middleware and Prisma to secure application routes and server-side operations.",
+    ],
+  },
+  {
+    role: "Technical Consultant",
+    organization: "Independent Project (Pool Company)",
+    dates: "Summer 2025",
+    highlights: [
+      "Designed a Google Sheets workflow to track pool job expenses and customer records.",
+      "Implemented Google Sheets formulas to automate calculation of expenses, taxes, and profit.",
+    ],
+  },
+  {
+    role: "ASU Senior Capstone Project",
+    organization: "General Dynamics",
+    dates: "August 2023 - May 2024",
+    highlights: [
+      "Developed a demo application to test hardware via SCPI commands, reducing manual testing.",
+      "Led backend development for SCPI command parsing, validation, and execution.",
+      "Collaborated in Agile sprints, participating in planning, development, and project reviews.",
+    ],
+  },
+];
+
+function TechList({ items }) {
+  return (
+    <div className="tech-list">
+      {items.map((item) => <span className="tech-tag" key={item}>{item}</span>)}
+    </div>
+  );
+}
 
 function App() {
-  const [activeSection, setActiveSection] = useState("About");
-  const [selectedProject, setSelectedProject] = useState(null);
-
-  const skills = {
-    Languages: [
-      { name: "C#", color: "#9b4f96" },
-      { name: "Java", color: "#f89820" },
-      { name: "JavaScript", color: "#f7df1e" },
-      { name: "Python", color: "#306998" },
-    ],
-    Technologies: [
-      { name: "React", color: "#61dafb" },
-      { name: "ASP.NET", color: "#512bd4" },
-      { name: "Express", color: "#353535" },
-      { name: "Node.js", color: "#3c873a" },
-      { name: ".NET", color: "#512bd4" },
-    ],
-    Databases: [
-      { name: "MongoDB", color: "#47a248" },
-      { name: "SQL", color: "#00758f" },
-    ],
-  };
-
-  const projects = [
-    {
-      name: "Pathfinding Visualizer",
-      img: pathfindingVisualizer,
-      description: "Visualize algorithms for pathfinding on a grid with animations.",
-      stack: ["React", "JavaScript", "CSS"],
-      github: "https://github.com/AngelMoreno24/pathfinder-visualizer",
-      demo: "https://pathfindingvizualizer.netlify.app/",
-    },
-    {
-      name: "Algorithm Visualizer",
-      img: algorithmVisualizer,
-      description: "Interactive visualizations for common sorting and searching algorithms.",
-      stack: ["React", "JavaScript", "Bootstrap"],
-      github: "https://github.com/AngelMoreno24/AlgoVizualizer",
-      demo: "https://am-algorithm-visualizer.netlify.app",
-    },
-    {
-      name: "Expense Tracker",
-      img: expenseTracker,
-      description: "Track daily expenses and visualize spending habits.",
-      stack: ["React", "Node.js", "Express", "MongoDB"],
-      github: "https://github.com/AngelMoreno24/Expense-Tracker",
-      demo: "https://gorgeous-churros-134386.netlify.app",
-    },
-    {
-      name: "Chat Application",
-      img: chatApp,
-      description: "Real-time chat app with multiple rooms and user authentication.",
-      stack: ["Node.js", "Express", "React", "Socket.IO", "Azure SQL"],
-      github: "https://github.com/AngelMoreno24/chat-website",
-      demo: "https://am-chat-application.netlify.app/home",
-    },
-    {
-      name: "Ticket Tracker",
-      img: ticketTracker,
-      description: "Track software tickets with comments, attachments, and status updates.",
-      stack: ["React", "Node.js", "Express", "MongoDB"],
-      github: "https://github.com/AngelMoreno24/Bug-Tracker",
-      demo: "https://am-ticket-tracker.netlify.app",
-    },
-  ];
-
-  const openProjectModal = (project) => setSelectedProject(project);
-  const closeProjectModal = () => setSelectedProject(null);
-
-
+  const [isDarkMode, setIsDarkMode] = useState(true);
+  const isProjectsPage = window.location.pathname.replace(/\/$/, "") === "/projects";
+  const sectionHref = (section) => isProjectsPage ? `/#${section}` : `#${section}`;
 
   return (
-    <div className="container">
-      <main className="content">
-        {/* Left Side */}
-        <div className="fixed-text">
-          <h1>Angel Moreno</h1>
-          <h3>Phoenix, Arizona</h3>
-          <p>angel.moreno8424@gmail.com</p>
-          <p>602-793-2114</p>
+    <div className="site-shell" data-theme={isDarkMode ? "dark" : "light"}>
+      <header className="site-header">
+        <nav className="top-nav" aria-label="Main navigation">
+          <a href={sectionHref("about")}>About</a>
+          <a href={sectionHref("education")}>Education</a>
+          <a href={sectionHref("experience")}>Experience</a>
+          <a href={isProjectsPage ? "/projects" : "#projects"}>Projects</a>
+          <a href={sectionHref("skills")}>Skills</a>
+        </nav>
+        <button
+          className="theme-toggle"
+          type="button"
+          onClick={() => setIsDarkMode((darkMode) => !darkMode)}
+          aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
+          title={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
+        >
+          <span aria-hidden="true">{isDarkMode ? "☼" : "◐"}</span>
+        </button>
+      </header>
 
-          <div className="social-buttons">
-            <a
-              href="https://github.com/AngelMoreno24"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-btn"
-            >
-              <img
-                src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
-                alt="GitHub"
-                className="social-icon"
-              />
-            </a>
-
-            <a
-              href="https://www.linkedin.com/in/angel-moreno-1568b5327/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-btn"
-            >
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png"
-                alt="LinkedIn"
-                className="social-icon"
-              />
-            </a>
-
-            <a
-              href="/Angel_Moreno_Resume.pdf"
-              download="Angel_Moreno_Resume.pdf"
-              className="resume-btn"
-            >
-              📄 Resume
-            </a>
-          </div>
-        </div>
-
-        {/* Right Side */}
-        <div className="static-section">
-          <div className="section-nav">
-            <Button
-              variant="dark"
-              className={activeSection === "About" ? "active-btn" : ""}
-              onClick={() => setActiveSection("About")}
-            >
-              About
-            </Button>
-            <Button
-              variant="dark"
-              className={activeSection === "Projects" ? "active-btn" : ""}
-              onClick={() => setActiveSection("Projects")}
-            >
-              Projects
-            </Button>
-          </div>
-
-          {activeSection === "About" && (
-            <div>
-              <h2>About Me</h2>
-              <p>
-                Highly motivated Computer Science graduate skilled in software engineering principles.
-                Seeking a role where I can grow and learn from experienced team members while contributing current skills.
-              </p>
-
-              <h2>Skills</h2>
-              {Object.keys(skills).map((category) => (
-                <div key={category}>
-                  <h3>{category}</h3>
-                  <div className="skill-bubbles">
-                    {skills[category].map((skill) => (
-                      <span
-                        key={skill.name}
-                        className="skill-bubble"
-                        style={{ backgroundColor: skill.color, color: "#fff" }}
-                        data-skill={skill.name}
-                      >
-                        {skill.name}
-                      </span>
-                    ))}
-                  </div>
+      <main id="top">
+        {isProjectsPage ? (
+          <section className="section-wrap projects-page" id="projects" aria-labelledby="projects-title">
+            <div className="section-heading">
+              <div>
+                <p className="section-kicker">SELECTED WORK</p>
+                <h1 id="projects-title">Projects</h1>
+              </div>
+              <a className="text-link view-more-link" href="/#about">Back to home <span aria-hidden="true">↗</span></a>
+            </div>
+            <div className="project-grid">
+              {projects.map((project, index) => (
+                <ProjectCard project={project} index={index} key={project.name} />
+              ))}
+            </div>
+          </section>
+        ) : (
+          <>
+        <section className="hero-section" id="about" aria-labelledby="intro-title">
+          <div className="hero-copy">
+            <p className="eyebrow">
+              <span className="availability-dot" aria-hidden="true" />
+              COMPUTER SCIENCE GRADUATE
+              <span className="eyebrow-divider" aria-hidden="true">/</span>
+              PHOENIX, AZ
+            </p>
+            <h1 id="intro-title">Angel Moreno<span>.</span></h1>
+            <p className="hero-lede">Computer Science graduate focused on full-stack development, interactive tools, and thoughtful user experiences. I enjoy taking an idea from the first sketch through to a working product.</p>
+            <div className="profile-skills" id="skills" aria-labelledby="profile-skills-title">
+              <h2 id="profile-skills-title">Skills</h2>
+              {skills.map((group) => (
+                <div className="profile-skill-row" key={group.category}>
+                  <h3>{group.category}</h3>
+                  <TechList items={group.items} />
                 </div>
               ))}
-
-              <h2>Education</h2>
-              <div className="education-section">
-                <img
-                  src="https://www.crwflags.com/fotw/images/u/us_u_azs.gif"
-                  alt="Profile"
-                  className="profile-pic"
-                />
-                <div className="education-text">
-                  <p><strong>Bachelor of Computer Science</strong></p>
-                  <p>Arizona State University</p>
-                  <p>Ira A. Fulton Schools of Engineering</p>
-                </div>
-              </div>
             </div>
-          )}
+            <div className="hero-links" aria-label="Resume and contact links">
+              <a href="/Angel_Moreno_Resume.pdf" download="Angel_Moreno_Resume.pdf">
+                <img src="/icons/resume.svg" alt="" aria-hidden="true" />Resume
+              </a>
+              <a href="https://www.linkedin.com/in/angel-moreno-1568b5327/" target="_blank" rel="noopener noreferrer">
+                <img src="/icons/linkedin.svg" alt="" aria-hidden="true" />LinkedIn
+              </a>
+              <a href="https://github.com/AngelMoreno24" target="_blank" rel="noopener noreferrer">
+                <img src="/icons/github.svg" alt="" aria-hidden="true" />GitHub
+              </a>
+              <a href="mailto:angel.moreno8424@gmail.com">
+                <img src="/icons/email.svg" alt="" aria-hidden="true" />Email
+              </a>
+            </div>
+          </div>
 
-          {activeSection === "Projects" && (
+          <div className="portrait-placeholder" role="img" aria-label="Portrait photo placeholder">
+            <span className="portrait-symbol" aria-hidden="true">+</span>
+            <span className="portrait-caption">PORTRAIT PHOTO</span>
+          </div>
+        </section>
+
+        <section className="education-section" id="education" aria-labelledby="education-title">
+          <div className="education-copy">
+            <p className="section-kicker">FOUNDATION</p>
+            <h2 id="education-title">Education</h2>
+          </div>
+          <div className="education-entry">
+            <div className="education-mark" aria-hidden="true">BS / CS</div>
             <div>
-              <h2>Projects</h2>
-              <div className="project-grid">
-                {projects.map((project) => (
-                  <div
-                    key={project.name}
-                    className="project-card"
-                    onClick={() => openProjectModal(project)}
-                  >
-                    <img
-                      src={project.img}
-                      alt={project.name}
-                      className="project-img"
-                    />
-                    <p>{project.name}</p>
-                  </div>
-                ))}
-              </div>
+              <h3>Bachelor of Computer Science</h3>
+              <p>Arizona State University</p>
+              <p>Ira A. Fulton Schools of Engineering</p>
             </div>
-          )}
-        </div>
+          </div>
+        </section>
+
+        <section className="section-wrap experience-section" id="experience" aria-labelledby="experience-title">
+          <div className="section-heading">
+            <div>
+              <p className="section-kicker">WORK / EXPERIENCE</p>
+              <h2 id="experience-title">Experience</h2>
+            </div>
+          </div>
+          <div className="experience-list">
+            {experience.map((entry) => (
+              <article className="experience-entry" key={entry.role}>
+                <div className="experience-heading">
+                  <div className="experience-title-group">
+                    <h3>{entry.role}</h3>
+                    <p className="experience-organization">
+                      {entry.organization}{entry.location ? ` · ${entry.location}` : ""}
+                    </p>
+                  </div>
+                  <div className="experience-meta">{entry.dates}</div>
+                </div>
+                <ul className="experience-highlights">
+                  {entry.highlights.map((highlight) => <li key={highlight}>{highlight}</li>)}
+                </ul>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="section-wrap" id="projects" aria-labelledby="projects-title">
+          <div className="section-heading">
+            <div>
+              <p className="section-kicker">SELECTED WORK</p>
+              <h2 id="projects-title">Featured projects</h2>
+            </div>
+            <a className="text-link view-more-link" href="/projects">View more <span aria-hidden="true">↗</span></a>
+          </div>
+          <div className="project-grid">
+            {projects.slice(0, 2).map((project, index) => (
+              <ProjectCard project={project} index={index} key={project.name} />
+            ))}
+          </div>
+        </section>
+          </>
+        )}
       </main>
 
-      {/* Project Modal */}
-      {selectedProject && (
-        <div className="modal-overlay" onClick={closeProjectModal}>
-          <div className="modal-content fade-in" onClick={(e) => e.stopPropagation()}>
-            <button className="close-btn" onClick={closeProjectModal}>×</button>
-            <img src={selectedProject.img} alt={selectedProject.name} className="modal-img" />
-            <h2>{selectedProject.name}</h2>
-            <p>{selectedProject.description}</p>
-
-            <h3>Tech Stack</h3>
-            <div className="stack-list">
-              {selectedProject.stack.map((tech) => (
-                <span
-                  key={tech}
-                  className="skill-bubble"
-                  data-skill={tech}
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
-
-            <div className="modal-links">
-              <a href={selectedProject.github} target="_blank" rel="noopener noreferrer" className="resume-btn-github">
-                GitHub
-              </a>
-              <a href={selectedProject.demo} target="_blank" rel="noopener noreferrer" className="resume-btn">
-                Live Demo
-              </a>
-            </div>
-          </div>
+      <footer className="site-footer">
+        <span>© {new Date().getFullYear()} Angel Moreno</span>
+        <div className="footer-links">
+          <a href="mailto:angel.moreno8424@gmail.com"><img src="/icons/email.svg" alt="" aria-hidden="true" />Email</a>
+          <a href="https://github.com/AngelMoreno24" target="_blank" rel="noopener noreferrer"><img src="/icons/github.svg" alt="" aria-hidden="true" />GitHub</a>
+          <a href="https://www.linkedin.com/in/angel-moreno-1568b5327/" target="_blank" rel="noopener noreferrer"><img src="/icons/linkedin.svg" alt="" aria-hidden="true" />LinkedIn</a>
+          <a href="/Angel_Moreno_Resume.pdf" download="Angel_Moreno_Resume.pdf"><img src="/icons/resume.svg" alt="" aria-hidden="true" />Resume</a>
         </div>
-      )}
+      </footer>
     </div>
+  );
+}
+
+function ProjectCard({ project, index }) {
+  return (
+    <article className="project-card">
+      <a className="project-image-link" href={project.demo} target="_blank" rel="noopener noreferrer" aria-label={`Open ${project.name} demo`}>
+        <img className="project-image" src={project.image} alt={`${project.name} interface`} loading="lazy" />
+      </a>
+      <div className="project-heading">
+        <span className="project-number">0{index + 1}</span>
+        <h3>{project.name}</h3>
+        <a className="round-arrow" href={project.github} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.name} source code`}>↗</a>
+      </div>
+      <p className="project-description">{project.description}</p>
+      <div className="project-footer">
+        <TechList items={project.stack} />
+        <a className="text-link" href={project.demo} target="_blank" rel="noopener noreferrer">Live demo <span aria-hidden="true">↗</span></a>
+      </div>
+    </article>
   );
 }
 
