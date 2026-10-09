@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen, within } from '@testing-library/react';
 import App from './App';
 
 test('renders the profile, history tabs, inline skills, and two featured projects', () => {
@@ -24,11 +24,11 @@ test('renders the profile, history tabs, inline skills, and two featured project
   expect(screen.getByText("4-time recipient of the Dean's Honor List")).toBeInTheDocument();
   fireEvent.click(screen.getByRole('tab', { name: 'Experience' }));
   expect(screen.getByRole('heading', { name: 'Amazon Sortation Center Associate' })).toBeInTheDocument();
-  expect(screen.getByRole('heading', { name: 'Pathfinding Visualizer' })).toBeInTheDocument();
-  expect(screen.getByRole('heading', { name: 'Algorithm Visualizer' })).toBeInTheDocument();
-  expect(screen.queryByRole('heading', { name: 'Ticket Tracker' })).not.toBeInTheDocument();
+  expect(screen.getByRole('heading', { name: 'Ticket Tracker' })).toBeInTheDocument();
+  expect(screen.getByRole('heading', { name: 'Pool Angel' })).toBeInTheDocument();
+  expect(screen.queryByRole('heading', { name: 'Pathfinding Visualizer' })).not.toBeInTheDocument();
   expect(screen.getByRole('link', { name: /View more/ })).toHaveAttribute('href', '/projects');
-  expect(screen.getByRole('img', { name: 'Portrait photo placeholder' })).toBeInTheDocument();
+  expect(screen.queryByRole('img', { name: 'Portrait photo placeholder' })).not.toBeInTheDocument();
   expect(screen.getAllByRole('link', { name: 'Website' })).toHaveLength(2);
   expect(screen.getAllByRole('link', { name: 'Source' })).toHaveLength(2);
   expect(screen.queryByText('Live demo')).not.toBeInTheDocument();
@@ -43,9 +43,19 @@ test('renders every project on the projects page', () => {
   expect(screen.getByRole('heading', { name: 'Projects' })).toBeInTheDocument();
   expect(screen.getByRole('heading', { name: 'Pathfinding Visualizer' })).toBeInTheDocument();
   expect(screen.getByRole('heading', { name: 'Ticket Tracker' })).toBeInTheDocument();
+  expect(screen.getByRole('heading', { name: 'Pool Angel' })).toBeInTheDocument();
   expect(screen.getByRole('link', { name: /Back to home/ })).toHaveAttribute('href', '/#about');
-  expect(screen.getAllByRole('link', { name: 'Website' })).toHaveLength(5);
-  expect(screen.getAllByRole('link', { name: 'Source' })).toHaveLength(5);
+  expect(screen.getAllByRole('link', { name: 'Website' })).toHaveLength(4);
+  expect(screen.getAllByRole('link', { name: 'Source' })).toHaveLength(6);
+  const ticketTrackerCard = screen.getByRole('heading', { name: 'Ticket Tracker' }).closest('.project-card');
+  const poolAngelCard = screen.getByRole('heading', { name: 'Pool Angel' }).closest('.project-card');
+  const expenseTrackerCard = screen.getByRole('heading', { name: 'Expense Tracker' }).closest('.project-card');
+  const chatApplicationCard = screen.getByRole('heading', { name: 'Chat Application' }).closest('.project-card');
+  expect(within(ticketTrackerCard).getByRole('link', { name: 'Website' })).toHaveAttribute('href', 'https://am-ticket-tracker.netlify.app');
+  expect(within(poolAngelCard).getByRole('link', { name: 'Website' })).toHaveAttribute('href', 'https://am-pool-angel.netlify.app/');
+  expect(within(poolAngelCard).getByRole('link', { name: 'Source' })).toHaveAttribute('href', 'https://github.com/AngelMoreno24/Pool-Angel');
+  expect(within(expenseTrackerCard).queryByRole('link', { name: 'Website' })).not.toBeInTheDocument();
+  expect(within(chatApplicationCard).queryByRole('link', { name: 'Website' })).not.toBeInTheDocument();
   expect(screen.queryByText('SELECTED WORK')).not.toBeInTheDocument();
 
   window.history.pushState({}, '', '/');

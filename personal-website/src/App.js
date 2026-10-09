@@ -5,6 +5,7 @@ import expenseTracker from "./images/expenseTracker.PNG";
 import pathfindingVisualizer from "./images/pathfindingVisualizer.PNG";
 import chatApp from "./images/chatApp.PNG";
 import ticketTracker from "./images/ticketTracker.PNG";
+import poolAngel from "./images/poolAngel.PNG";
 
 const skills = [
   { category: "Languages", items: ["C#", "Java", "JavaScript", "Python"] },
@@ -13,6 +14,22 @@ const skills = [
 ];
 
 const projects = [
+  {
+    name: "Ticket Tracker",
+    image: ticketTracker,
+    description: "Manage software tickets with comments, attachments, and status updates.",
+    stack: ["React", "Node.js", "Express", "MongoDB"],
+    github: "https://github.com/AngelMoreno24/Bug-Tracker",
+    demo: "https://am-ticket-tracker.netlify.app",
+  },
+  {
+    name: "Pool Angel",
+    image: poolAngel,
+    description: "A full-stack pool service operations platform for managing customers, properties, pools, recurring jobs, technician routes, service visits, and business reporting.",
+    stack: ["React", "Vite", "Tailwind CSS", "Node.js", "Express", "Prisma", "PostgreSQL", "Supabase Auth"],
+    github: "https://github.com/AngelMoreno24/Pool-Angel",
+    demo: "https://am-pool-angel.netlify.app/",
+  },
   {
     name: "Pathfinding Visualizer",
     image: pathfindingVisualizer,
@@ -35,7 +52,6 @@ const projects = [
     description: "Track daily expenses and get a clearer view of spending habits.",
     stack: ["React", "Node.js", "Express", "MongoDB"],
     github: "https://github.com/AngelMoreno24/Expense-Tracker",
-    demo: "https://gorgeous-churros-134386.netlify.app",
   },
   {
     name: "Chat Application",
@@ -43,15 +59,6 @@ const projects = [
     description: "A real-time chat app with multiple rooms and user authentication.",
     stack: ["React", "Node.js", "Express", "Socket.IO", "Azure SQL"],
     github: "https://github.com/AngelMoreno24/chat-website",
-    demo: "https://am-chat-application.netlify.app/home",
-  },
-  {
-    name: "Ticket Tracker",
-    image: ticketTracker,
-    description: "Manage software tickets with comments, attachments, and status updates.",
-    stack: ["React", "Node.js", "Express", "MongoDB"],
-    github: "https://github.com/AngelMoreno24/Bug-Tracker",
-    demo: "https://am-ticket-tracker.netlify.app",
   },
 ];
 
@@ -179,32 +186,30 @@ function App() {
             </div>
           </div>
 
-          <div className="portrait-placeholder" role="img" aria-label="Portrait photo placeholder">
-            <span className="portrait-symbol" aria-hidden="true">+</span>
-            <span className="portrait-caption">PORTRAIT PHOTO</span>
-          </div>
         </section>
 
         <section className="section-wrap history-section" aria-label="Experience and education">
-          <div className="profile-tabs" role="tablist" aria-label="Experience and education">
-            <button
-              id="experience-tab"
-              className="profile-tab"
-              type="button"
-              role="tab"
-              aria-selected={activeHistoryTab === "experience"}
-              aria-controls="history-panel"
-              onClick={() => setActiveHistoryTab("experience")}
-            >Experience</button>
-            <button
-              id="education-tab"
-              className="profile-tab"
-              type="button"
-              role="tab"
-              aria-selected={activeHistoryTab === "education"}
-              aria-controls="history-panel"
-              onClick={() => setActiveHistoryTab("education")}
-            >Education</button>
+          <div className="profile-tabs-frame">
+            <div className="profile-tabs" role="tablist" aria-label="Experience and education">
+              <button
+                id="experience-tab"
+                className="profile-tab"
+                type="button"
+                role="tab"
+                aria-selected={activeHistoryTab === "experience"}
+                aria-controls="history-panel"
+                onClick={() => setActiveHistoryTab("experience")}
+              >Experience</button>
+              <button
+                id="education-tab"
+                className="profile-tab"
+                type="button"
+                role="tab"
+                aria-selected={activeHistoryTab === "education"}
+                aria-controls="history-panel"
+                onClick={() => setActiveHistoryTab("education")}
+              >Education</button>
+            </div>
           </div>
           <div
             className="history-panel"
@@ -237,11 +242,13 @@ function App() {
                 <div className="education-mark">
                   <img src="/icons/asu-mark.svg" alt="Arizona State University" />
                 </div>
-                <div>
-                  <h2>Bachelor of Computer Science</h2>
+                <div className="education-content">
+                  <div className="education-heading">
+                    <h2>Bachelor of Computer Science</h2>
+                    <div className="experience-meta">August 2020 - May 2024</div>
+                  </div>
                   <p>Arizona State University</p>
                   <p>Ira A. Fulton Schools of Engineering</p>
-                  <p>August 2020 - May 2024</p>
                   <ul className="education-highlights">
                     <li>4-time recipient of the Dean's Honor List</li>
                   </ul>
@@ -284,9 +291,9 @@ function App() {
 function ProjectCard({ project }) {
   return (
     <article className="project-card">
-      <div className="project-image-link">
+      {project.image && <div className="project-image-link">
         <img className="project-image" src={project.image} alt={`${project.name} interface`} loading="lazy" />
-      </div>
+      </div>}
       <div className="project-heading">
         <h3>{project.name}</h3>
       </div>

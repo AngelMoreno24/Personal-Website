@@ -109,42 +109,9 @@ button:focus-visible {
 }
 
 .hero-section {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 210px;
-  align-items: center;
-  gap: clamp(32px, 6vw, 64px);
   padding-block: 64px 58px;
 }
 
-.portrait-placeholder {
-  grid-column: 2;
-  grid-row: 1;
-  display: flex;
-  width: 100%;
-  aspect-ratio: 0.76;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: var(--surface);
-  color: var(--quiet);
-}
-
-.portrait-symbol {
-  display: grid;
-  width: 44px;
-  aspect-ratio: 1;
-  place-items: center;
-  border: 1px solid var(--line);
-  border-radius: 50%;
-  color: var(--accent);
-  font-size: 1.5rem;
-  font-weight: 300;
-}
-
-.portrait-caption,
 .eyebrow,
 .experience-meta {
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
@@ -156,8 +123,7 @@ button:focus-visible {
 }
 
 .hero-copy {
-  grid-column: 1;
-  grid-row: 1;
+  max-width: 760px;
 }
 
 .eyebrow {
@@ -278,14 +244,23 @@ button:focus-visible {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   overflow: hidden;
-  border: 1px solid var(--line);
   border-radius: 7px;
+}
+
+.profile-tabs-frame {
+  padding: 4px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.history-section {
+  border-top: 0;
 }
 
 .profile-tab {
   min-height: 56px;
   padding: 0 12px;
-  border: 0;
   border: 0;
   background: transparent;
   color: var(--muted);
@@ -295,7 +270,8 @@ button:focus-visible {
 }
 
 .profile-tab[aria-selected="true"] {
-  background: var(--surface);
+  border-radius: 5px;
+  background: var(--page);
   color: var(--text);
 }
 
@@ -346,6 +322,18 @@ button:focus-visible {
   font-weight: 620;
 }
 
+.education-content {
+  min-width: 0;
+  flex: 1;
+}
+
+.education-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
 .education-entry p {
   margin: 5px 0 0;
   color: var(--muted);
@@ -361,13 +349,13 @@ button:focus-visible {
   margin-bottom: 18px;
 }
 
-.experience-list {
-  border-top: 1px solid var(--line);
-}
-
 .experience-entry {
   padding-block: 22px;
   border-bottom: 1px solid var(--line);
+}
+
+.experience-entry:last-child {
+  border-bottom: 0;
 }
 
 .experience-heading {
