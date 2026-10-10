@@ -9,8 +9,8 @@ import poolAngel from "./images/poolAngel.PNG";
 
 const skills = [
   { category: "Languages", items: ["C#", "Java", "JavaScript", "Python"] },
-  { category: "Frameworks", items: ["React", "ASP.NET", ".NET", "Express", "Node.js"] },
-  { category: "Data", items: ["MongoDB", "SQL", "Azure SQL"] },
+  { category: "Frameworks", items: ["React", "ASP.NET", "Express", "Node.js", "Next.js"] },
+  { category: "Databases", items: ["MongoDB", "PostgreSQL", "SQL", "Supabase"] },
 ];
 
 const projects = [
@@ -160,7 +160,7 @@ function App() {
               PHOENIX, AZ
             </p>
             <h1 id="intro-title">Angel Moreno<span>.</span></h1>
-            <p className="hero-lede">Computer Science graduate focused on full-stack development, interactive tools, and thoughtful user experiences. I enjoy taking an idea from the first sketch through to a working product.</p>
+            <p className="hero-lede">Computer Science graduate focused on full-stack development, interactive tools, and thoughtful user experiences.</p>
             <div className="profile-skills" id="skills" aria-labelledby="profile-skills-title">
               <h2 id="profile-skills-title">Skills</h2>
               {skills.map((group) => (
