@@ -240,7 +240,7 @@ function App() {
             ) : (
               <article className="education-entry">
                 <div className="education-mark">
-                  <img src="/icons/asu-mark.svg" alt="Arizona State University" />
+                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKwOCPrdaLUxg8uoKcsydcqQOgWbhBPekdbWVnwp1IjQ&s=10" alt="Arizona State University" />
                 </div>
                 <div className="education-content">
                   <div className="education-heading">

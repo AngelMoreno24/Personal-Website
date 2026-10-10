@@ -215,7 +215,18 @@ button:focus-visible {
   transition: color 160ms ease;
 }
 
+.hero-links a {
+  min-height: 40px;
+  padding: 0 13px;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  background: var(--surface);
+  transition: color 160ms ease, background-color 160ms ease, border-color 160ms ease;
+}
+
 .hero-links a:hover {
+  border-color: var(--accent-strong);
+  background: var(--surface-hover);
   color: var(--text);
 }
 
